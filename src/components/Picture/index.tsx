@@ -7,15 +7,17 @@ interface Props{
     photo: Photo
     isExpanded?: boolean
     onZoom?: (photo: Photo) => void
+    toggleFavorites: (photo: Photo) => void
 }
 
-const Picture: React.FC<Props> = ({photo, isExpanded, onZoom}) => {
+const Picture: React.FC<Props> = ({photo, isExpanded, onZoom, toggleFavorites}) => {
     const handleZoom = () => {
         if (onZoom) { // Verifica se onZoom é uma função antes de chamar
             onZoom(photo);
-            console.log("isExpanded: ", isExpanded)
         }
     };
+
+    const favoriteIcon = photo.favorite ? '/icons/favorito-ativo.png' : '/icons/favorito.png'
 
     return(
         <S.Figure $isExpanded={isExpanded} id={photo.id}>
@@ -24,8 +26,8 @@ const Picture: React.FC<Props> = ({photo, isExpanded, onZoom}) => {
                 <h3>{photo.titulo}</h3>
                 <S.Footer>
                     <h4>{photo.fonte}</h4>
-                    <ButtonIcon>
-                        <img src="/icons/favorito.png" alt="Ícone de favorito" />
+                    <ButtonIcon onClick={() => toggleFavorites(photo)}>
+                        <img src={favoriteIcon} alt="Ícone de favorito" />
                     </ButtonIcon>
                     {!isExpanded && <ButtonIcon aria-hidden={isExpanded} onClick={handleZoom}>
                         <img src="/icons/expandir.png" alt="Ícone de expandir" />

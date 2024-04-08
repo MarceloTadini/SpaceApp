@@ -4,4 +4,5 @@ export interface Photo{
     path: string;
     id: string;
     tagId: number;
+    favorite?: boolean;
 }

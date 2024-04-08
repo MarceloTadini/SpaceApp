@@ -7,15 +7,16 @@ import { ButtonIcon } from "../ButtonIcon/styles";
 interface Props{
     photo: Photo
     onClose: () => void
+    toggleFavorites: (photo: Photo) => void
 }
 
-const ZoomModal: React.FC<Props> = ({photo, onClose}) => {
+const ZoomModal: React.FC<Props> = ({photo, onClose, toggleFavorites}) => {
     return(
         <>
             {photo && <>
                 <S.Overlay>
                     <S.Dialog open={!!photo} onClose={onClose}>
-                        <Picture photo={photo} isExpanded/>
+                        <Picture photo={photo} isExpanded toggleFavorites={toggleFavorites}/>
                         <form method="dialog">
                             <ButtonIcon formMethod="dialog">
                                 <img src="/icons/fechar.png" alt=" Ícone de fechar" />

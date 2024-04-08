@@ -8,9 +8,10 @@ import Populars from "./Populars";
 interface Props {
     photos: Photo[];
     onSelect: (photo: Photo) => void;
+    toggleFavorites: (photo: Photo) => void;
 }
 
-const Galery: React.FC<Props> = ({ photos, onSelect }) => {
+const Galery: React.FC<Props> = ({ photos, onSelect, toggleFavorites }) => {
     return(
         <>
             <Tags/>
@@ -23,6 +24,7 @@ const Galery: React.FC<Props> = ({ photos, onSelect }) => {
                               key={photo.id} 
                               photo ={photo}
                               onZoom={onSelect}
+                              toggleFavorites={toggleFavorites}
                             />
                         ))}
                     </S.Wrapper>
