@@ -1,5 +1,5 @@
 import React from "react";
-import Tags from "./Tags/indext"; // Assuming Tags is a separate component
+import Tags from "./Tags"; // Assuming Tags is a separate component
 import * as S from './styles'
 import Picture from "../Picture";
 import { Photo } from "../../types";
@@ -9,12 +9,13 @@ interface Props {
     photos: Photo[];
     onSelect: (photo: Photo) => void;
     toggleFavorites: (photo: Photo) => void;
+    setTag: React.Dispatch<React.SetStateAction<number>>
 }
 
-const Galery: React.FC<Props> = ({ photos, onSelect, toggleFavorites }) => {
+const Galery: React.FC<Props> = ({ photos, onSelect, toggleFavorites, setTag }) => {
     return(
         <>
-            <Tags/>
+            <Tags setTag={setTag}/>
             <S.Container>
                 <S.Section>
                     <S.Title>Navegue pela galeria</S.Title>

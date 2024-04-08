@@ -1,12 +1,16 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 import * as S from './styles'
 import SearchBar from "../SearchBar";
 
-const Header: React.FC = () => {
+interface Props{
+    setFilter: Dispatch<SetStateAction<string>>
+}
+
+const Header: React.FC<Props> = ({setFilter}) => {
     return(
         <S.Container>
             <img src="/images/logo.png" alt="Logo" />
-            <SearchBar/>
+            <SearchBar setFilter={setFilter}/>
         </S.Container>
     )
 }

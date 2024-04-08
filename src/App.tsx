@@ -1,4 +1,4 @@
-import React, { useState } from "react"
+import React, { useEffect, useState } from "react"
 import { ThemeProvider } from "styled-components"
 import { defaultTheme } from "./styles/theme/default"
 import GlobalStyle from "./styles/global"
@@ -15,6 +15,17 @@ import { Photo } from "./types"
 const App: React.FC = () => {
   const [galeryPhotos, setGaleryPhotos] = useState<Photo[]>(photos)
   const [selectedPhotos, setSelectedPhotos] = useState<Photo>()
+  const [tag, setTag] = useState(0)
+  const [filter, setFilter] = useState('')
+
+  useEffect(() => {
+    const filteredPhotos = photos.filter(photo => {
+      const tagFiltered = !tag || photo.tagId === tag
+      const titleFiltered = !filter || photo.titulo.toLowerCase().includes(filter.toLowerCase())
+      return titleFiltered && tagFiltered
+    })
+    setGaleryPhotos(filteredPhotos)
+  }, [filter, tag])
   
   const  toggleFavorites = (photo: Photo) => {
    if(photo.id === selectedPhotos?.id){
@@ -35,7 +46,7 @@ const App: React.FC = () => {
     <ThemeProvider theme={defaultTheme}>
       <GlobalStyle/>
       <AppContainer>
-        <Header/>
+        <Header setFilter={setFilter}/>
         <MainContainer>
           <SideBar/>
           <GaleryContainer>
@@ -47,6 +58,7 @@ const App: React.FC = () => {
               photos={galeryPhotos} 
               onSelect={(photo: Photo) => setSelectedPhotos(photo)}
               toggleFavorites={toggleFavorites}
+              setTag={setTag}
             />
           </GaleryContainer>
         </MainContainer>
