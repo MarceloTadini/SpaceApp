@@ -249,7 +249,7 @@ Error generating stack: `+o.message+`
     background-color: transparent;
     border: none;
     cursor: pointer;
-`,sd=({photo:e,isExpanded:t,onZoom:n,toggleFavorites:r})=>{const l=()=>{n&&n(e)},o=e.favorite?"./icons/favorito-ativo.png":"./icons/favorito.png";return C.jsxs(p0,{$isExpanded:t,id:e.id,children:[C.jsx("img",{src:e.path}),C.jsxs("figcaption",{children:[C.jsx("h3",{children:e.titulo}),C.jsxs(h0,{children:[C.jsx("h4",{children:e.fonte}),C.jsx(bi,{onClick:()=>r(e),children:C.jsx("img",{src:o,alt:"Ícone de favorito"})}),!t&&C.jsx(bi,{"aria-hidden":t,onClick:l,children:C.jsx("img",{src:"/icons/expandir.png",alt:"Ícone de expandir"})})]})]})]})},m0=M.section`
+`,sd=({photo:e,isExpanded:t,onZoom:n,toggleFavorites:r})=>{const l=()=>{n&&n(e)},o=e.favorite?"./icons/favorito-ativo.png":"./icons/favorito.png";return C.jsxs(p0,{$isExpanded:t,id:e.id,children:[C.jsx("img",{src:e.path}),C.jsxs("figcaption",{children:[C.jsx("h3",{children:e.titulo}),C.jsxs(h0,{children:[C.jsx("h4",{children:e.fonte}),C.jsx(bi,{onClick:()=>r(e),children:C.jsx("img",{src:o,alt:"Ícone de favorito"})}),!t&&C.jsx(bi,{"aria-hidden":t,onClick:l,children:C.jsx("img",{src:"./icons/expandir.png",alt:"Ícone de expandir"})})]})]})]})},m0=M.section`
     display: flex;
     flex-direction: column;
     gap: 16px;
